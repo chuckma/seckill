@@ -1,6 +1,8 @@
 package com.lucasma.seckill.controller;
 
 import com.lucasma.seckill.domain.User;
+import com.lucasma.seckill.redis.RedisService;
+import com.lucasma.seckill.redis.UserKey;
 import com.lucasma.seckill.result.CodeMsg;
 import com.lucasma.seckill.result.Result;
 import com.lucasma.seckill.service.UserService;
@@ -19,6 +21,10 @@ public class SampleController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    RedisService redisService;
+
     @RequestMapping("/hello/themaleaf")
     public String themaleaf(Model model) {
         model.addAttribute("name", "Joshua");
@@ -39,13 +45,13 @@ public class SampleController {
         return Result.success(true);
     }
 
-   /* @RequestMapping("/redis/get")
+    @RequestMapping("/redis/get")
     @ResponseBody
     public Result<User> redisGet() {
         User  user  = redisService.get(UserKey.getById, ""+1, User.class);
         return Result.success(user);
     }
-
+/*
     @RequestMapping("/redis/set")
     @ResponseBody
     public Result<Boolean> redisSet() {
