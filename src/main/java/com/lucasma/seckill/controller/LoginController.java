@@ -41,6 +41,6 @@ public class LoginController {
         log.info(loginVo.toString());
         //登录
         String token = seckillUserService.login(response, loginVo);
-        return  null;//Result.success(token);
+        return  Result.success(token);
     }
 }

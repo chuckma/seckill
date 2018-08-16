@@ -1,10 +1,19 @@
 package com.lucasma.seckill.vo;
 
+import com.lucasma.seckill.validator.IsMobile;
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.NotNull;
+
 public class LoginVo {
 
 
+    @NotNull
+    @IsMobile
     private String mobile;
 
+    @NotNull
+    @Length(min = 32)
     private String password;
 
 
