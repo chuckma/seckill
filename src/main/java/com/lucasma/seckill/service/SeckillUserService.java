@@ -64,6 +64,7 @@ public class SeckillUserService {
         }
         //生成cookie
         String token	 = UUIDUtil.uuid();
+        // 添加Cookie到 redis
         addCookie(response, token, user);
         return token;
     }
