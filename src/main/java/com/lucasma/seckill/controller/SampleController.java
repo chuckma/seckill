@@ -51,7 +51,7 @@ public class SampleController {
         User  user  = redisService.get(UserKey.getById, ""+1, User.class);
         return Result.success(user);
     }
-/*
+
     @RequestMapping("/redis/set")
     @ResponseBody
     public Result<Boolean> redisSet() {
@@ -72,7 +72,7 @@ public class SampleController {
         boolean ret2 = redisService.setNXEX(UserKey.getById, ""+1, user);
         return Result.success(ret1+","+ret2);
     }
-
+/*
     @RequestMapping("/array")
     @ResponseBody
     public Result<List<String>> array(@RequestParam("names")String[] names) {

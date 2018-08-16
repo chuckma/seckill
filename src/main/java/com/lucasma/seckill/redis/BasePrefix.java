@@ -3,7 +3,7 @@ package com.lucasma.seckill.redis;
 /**
  * @author Administrator
  */
-public class BasePrefix implements KeyPrefix{
+public abstract class BasePrefix implements KeyPrefix{
 
     private int expireSeconds;
 
