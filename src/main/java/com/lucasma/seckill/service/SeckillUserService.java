@@ -9,6 +9,7 @@ import com.lucasma.seckill.redis.RedisService;
 import com.lucasma.seckill.redis.SeckillUserKey;
 import com.lucasma.seckill.result.CodeMsg;
 import com.lucasma.seckill.vo.LoginVo;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -68,7 +69,17 @@ public class SeckillUserService {
         addCookie(response, token, user);
         return token;
     }
-
+    public SeckillUser getByToken(HttpServletResponse response, String token) {
+        if(StringUtils.isEmpty(token)) {
+            return null;
+        }
+        SeckillUser user = redisService.get(SeckillUserKey.token, token, SeckillUser.class);
+        //延长有效期
+        if(user != null) {
+            addCookie(response, token, user);
+        }
+        return user;
+    }
 
     private void addCookie(HttpServletResponse response, String token, SeckillUser user) {
         redisService.set(SeckillUserKey.token, token, user);
