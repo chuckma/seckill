@@ -40,6 +40,7 @@ public class LoginController {
     public Result<String> doLogin(HttpServletResponse response, @Valid LoginVo loginVo) {
         log.info(loginVo.toString());
         //登录
+        log.info("==========开始登陆了==========");
         String token = seckillUserService.login(response, loginVo);
         return  Result.success(token);
     }
