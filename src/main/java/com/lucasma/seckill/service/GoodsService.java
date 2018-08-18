@@ -1,6 +1,7 @@
 package com.lucasma.seckill.service;
 
 import com.lucasma.seckill.dao.GoodsDao;
+import com.lucasma.seckill.domain.Goods;
 import com.lucasma.seckill.domain.SeckillGoods;
 import com.lucasma.seckill.vo.GoodsVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,14 @@ public class GoodsService {
         int ret = goodsDao.reduceStock(g);
         return ret > 0;
     }
+
+
+//    public void reduceStock(GoodsVo goods) {
+//        Goods g = new Goods();
+//        g.setId(goods.getId());
+//        g.setGoodsStock(goods.getStockCount() - 1);
+//        goodsDao.reduceStock(g);
+//    }
 
     public void resetStock(List<GoodsVo> goodsList) {
         for(GoodsVo goods : goodsList ) {
